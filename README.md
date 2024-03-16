@@ -77,22 +77,23 @@ The main architecture is build around Product and Producer and it contains queri
 In the `/graphql/resolvers/uploadDocuments` folder you will find two options of importing:
 
 -   With relationship between Product and Producer
-    ! This one is more time comsuming !
+    ⏰ This one is more time comsuming ⏰
 
     For an organized relationship between Producers and Products
-    use the next two functions:
+    use this approach:
 
-    -   First function will introduce all producers from the .csv file (by unique names)
-    -   Second function will introduce all products (with a producerId)
+    -   `importProducersInDb()` function will import all producers from the .csv file (by unique names)
+    -   `importToDatabaseWithFilter()` function will import all products (with a producerId)
 
-    For eficiency, the importToDatabaseWithFilter function uses a Map
-    that will store the found users with the Name as KEY and producerId as VALUE
-    so it will take the Producer from the Map for next products with the same producerName
+    For eficiency, the `importToDatabaseWithFilter()` function uses a Map
+    that will store the found users with the `producerName` as KEY and `producer._id` as VALUE
+    so it will take the Producer from the Map for next products with the same `producerName`.
 
 -   Without relationship between Product and Producer
+    ⚡ This one is more time efficient ⚡
 
     For BULK import of Products without a relationship of producerId
-    just with the producerName assinged, use the next function
+    just with the producerName assinged, use the `importToDatabase()` function.
 
 ## 💻 Install with Docker
 
