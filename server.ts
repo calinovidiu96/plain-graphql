@@ -22,7 +22,7 @@ app.use(
 );
 
 app.use(
-	"/uploadFiles",
+	"/uploadFile",
 	createHandler({
 		schema: graphQlSchema,
 		rootValue: graphQlResolvers,
