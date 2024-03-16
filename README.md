@@ -76,8 +76,8 @@ The main architecture is build around Product and Producer and it contains queri
 
 In the `/graphql/resolvers/uploadDocuments` folder you will find two options of importing:
 
--   With relationship between Product and Producer
-    ⏰ This one is more time comsuming ⏰
+-   With relationship between Product and Producer  
+    ⏰ This one is more time comsuming ⏰  
 
     For an organized relationship between Producers and Products
     use this approach:
@@ -89,7 +89,7 @@ In the `/graphql/resolvers/uploadDocuments` folder you will find two options of 
     that will store the found users with the `producerName` as KEY and `producer._id` as VALUE
     so it will take the Producer from the Map for next products with the same `producerName`.
 
--   Without relationship between Product and Producer
+-   Without relationship between Product and Producer  
     ⚡ This one is more time efficient ⚡
 
     For BULK import of Products without a relationship of producerId
