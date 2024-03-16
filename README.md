@@ -63,13 +63,13 @@ The main architecture is build around Product and Producer and it contains queri
         "Availability",  
         "Conditions",  
         "ImageUrl",
-    -   Check if Vintage, Product Name, Producer are not empty values in CSV file
-    -   Creates a unique key in form of:
+    -   Check the mandatory columns not to be empty in the CSV file
+    -   Creates a unique key:
         key = `${vintage}_${productName}_${producer}`;
     -   Filter the entire .csv file and save just first row with this key and skip the duplicates
     -   Write the stream in a temporary local file
 -   (I chose to store the filtered information for possible future functionalities that may use it.)
--   Send mongoose requests in batches to create products
+-   Send mongoose requests to import the values
 -   Await to finish all the processes and delets the temporary file
 
 ## 💡 Two ways of importing a file
