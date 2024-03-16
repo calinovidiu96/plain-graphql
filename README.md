@@ -109,6 +109,6 @@ Send GraphQl mutation to: http://localhost:3000/uploadFile for uploading .csv fi
 
 ## Test it
 
--   (The app is already connected to a Mongo Compass Free database instance)
+(The app is already connected to a Mongo Compass Free database instance)
 -   You can find a GraphQL_Postman_import folder that contains a JSON file
 -   Import the file in Postman and you're ready to go
