@@ -1,1 +1,1 @@
-# plain-graphql-node
+# plain-graphql
