@@ -63,6 +63,7 @@ The main architecture is build around Product and Producer and it contains queri
         "Availability",  
         "Conditions",  
         "ImageUrl",
+    -   Check if Vintage, Product Name, Producer are not empty values in CSV file
     -   Creates a unique key in form of:
         key = `${vintage}_${productName}_${producer}`;
     -   Filter the entire .csv file and save just first row with this key and skip the duplicates
@@ -70,6 +71,28 @@ The main architecture is build around Product and Producer and it contains queri
 -   (I chose to store the filtered information for possible future functionalities that may use it.)
 -   Send mongoose requests in batches to create products
 -   Await to finish all the processes and delets the temporary file
+
+## 💡 Two ways of importing a file
+
+In the `/graphql/resolvers/uploadDocuments` folder you will find two options of importing:
+
+-   With relationship between Product and Producer
+    ! This one is more time comsuming !
+
+    For an organized relationship between Producers and Products
+    use the next two functions:
+
+    -   First function will introduce all producers from the .csv file (by unique names)
+    -   Second function will introduce all products (with a producerId)
+
+    For eficiency, the importToDatabaseWithFilter function uses a Map
+    that will store the found users with the Name as KEY and producerId as VALUE
+    so it will take the Producer from the Map for next products with the same producerName
+
+-   Without relationship between Product and Producer
+
+    For BULK import of Products without a relationship of producerId
+    just with the producerName assinged, use the next function
 
 ## 💻 Install with Docker
 

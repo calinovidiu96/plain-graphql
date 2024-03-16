@@ -49,6 +49,28 @@ const writeTempFile = async (fileData: any, filename: any) => {
 				const vintage = row.Vintage;
 				const productName = row["Product Name"];
 				const producer = row.Producer;
+				const color = row.Colour;
+				const quantity = row.Quantity;
+				const format = row.Format;
+				const price = row["Price (GBP)"];
+				const duty = row.Duty;
+				const availability = row.Availability;
+
+				// Skip the row if any of the required values are empty strings
+				if (
+					vintage.length == 0 ||
+					productName.length == 0 ||
+					producer.length == 0 ||
+					color.length == 0 ||
+					quantity.length == 0 ||
+					format.length == 0 ||
+					price.length == 0 ||
+					duty.length == 0 ||
+					availability.length == 0
+				) {
+					console.log("Skipping row due to missing required values.");
+					return;
+				}
 
 				const key = `${vintage}_${productName}_${producer}`;
 

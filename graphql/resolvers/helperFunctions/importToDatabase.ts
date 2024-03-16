@@ -1,6 +1,5 @@
 import { ReadStream, createReadStream } from "fs";
 import csvParser from "csv-parser";
-import ProducerModel from "../../../models/producerModel";
 import ProductModel from "../../../models/productModel";
 
 const importToDatabase = async (filePath: string) => {
