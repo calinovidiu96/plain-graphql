@@ -1,6 +1,6 @@
 import Product from "../../models/productModel";
 import Producer from "../../models/producerModel";
-import { uploadDocuments } from "./helperFunctions/uploadDocuments";
+import { uploadDocument } from "./helperFunctions/uploadDocuments";
 
 type IProduct = {
 	vintage: String;
@@ -155,5 +155,5 @@ export default {
 			throw new Error(`Failed to delete products. ${error}`);
 		}
 	},
-	uploadDocuments,
+	uploadDocument,
 };

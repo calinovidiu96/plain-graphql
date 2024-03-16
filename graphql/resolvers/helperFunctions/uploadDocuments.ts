@@ -4,7 +4,7 @@ import { deleteFile } from "./deleteTempFile";
 import { writeTempFile } from "./writeTempFile";
 import { importToDatabase } from "./importToDatabase";
 
-const uploadDocuments = async (root: any) => {
+const uploadDocument = async (root: any) => {
 	let tempFilePath: string | undefined;
 
 	try {
@@ -43,4 +43,4 @@ const uploadDocuments = async (root: any) => {
 	}
 };
 
-export { uploadDocuments };
+export { uploadDocument };

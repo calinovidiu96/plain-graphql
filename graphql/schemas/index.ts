@@ -78,7 +78,7 @@ const schema = `#graphql
     updateProduct(updateProductInput: UpdateProductInput!): Product
     deleteProducts(_ids: [ID]!): [ID]!
     createProducer(input: CreateProducerInput!): Producer!
-    uploadDocuments(file: Upload!): SuccessResult
+    uploadDocument(file: Upload!): SuccessResult
 
   }
 `;
