@@ -43,7 +43,7 @@ The main architecture is build around Product and Producer and it contains queri
 
 -   getProductsByProducerId(producerId: string)
 
-## The app incorporates a feature allowing users to import .csv files.
+## 📄 The app incorporates a feature allowing users to import .csv files.
 
 ### Functionality:
 
@@ -107,7 +107,7 @@ In the `/graphql/resolvers/uploadDocuments` folder you will find two options of 
 Send GraphQL queries / mutations to: http://localhost:3000/graphql for all normal queries  
 Send GraphQl mutation to: http://localhost:3000/uploadFile for uploading .csv file
 
-## Test it
+## 🧪 Test it
 
 (The app is already connected to a Mongo Compass Free database instance)
 
