@@ -70,7 +70,7 @@ The main architecture is build around Product and Producer and it contains queri
     -   Write the stream in a temporary local file
 -   (I chose to store the filtered information for possible future functionalities that may use it.)
 -   Send mongoose requests to import the values
--   Await to finish all the processes and delets the temporary file
+-   Await to finish all the processes and deletes the temporary file
 
 ## 💡 Two ways of importing a file
 
