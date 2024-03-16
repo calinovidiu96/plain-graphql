@@ -1,6 +1,7 @@
 ## 🌐 Overview
 
-This is a GraphQL server that is using Express. Main architecture is build around Product and Producer and it contains queries as:
+This is a GraphQL server based on Express that uses plain queries (no Apollo). As databes it uses MongoDB (and Mongoose for internal management).  
+The main architecture is build around Product and Producer and it contains queries as:
 
 -   createProducer (  
     name: String;  
@@ -70,7 +71,7 @@ This is a GraphQL server that is using Express. Main architecture is build aroun
 -   Send mongoose requests in batches to create products
 -   Await to finish all the processes and delets the temporary file
 
-## 💻 Install
+## 💻 Install with Docker
 
 -   Open a terminal in the main folder
 -   Run `docker build -t frw .  `
@@ -79,5 +80,11 @@ This is a GraphQL server that is using Express. Main architecture is build aroun
 
 -   Run `docker run -p 3000:3000 frw:latest`
 
-Send GraphQL queries / mutations to: http://localhost:3000/graphql for all normal queries
+Send GraphQL queries / mutations to: http://localhost:3000/graphql for all normal queries  
 Send GraphQl mutation to: http://localhost:3000/uploadFile for uploading .csv file
+
+## Test it
+
+-   (The app is already connected to a Mongo Compass Free database instance)
+-   You can find a GraphQL_Postman_import folder that contains a JSON file
+-   Import the file in Postman and you're ready to go
