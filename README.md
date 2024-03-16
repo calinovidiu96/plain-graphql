@@ -4,37 +4,37 @@ This is a GraphQL server based on Express that uses plain queries (no Apollo). A
 The main architecture is build around Product and Producer and it contains queries as:
 
 -   createProducer (  
-            name: String;  
-            country: String;  
-            region: String;  
+     name: String;  
+     country: String;  
+     region: String;  
     )
 
 -   createProducts ([
-            vintage: String;
-            name: String;
-            producerId: String
-            color: String
-            quantity: Number;
-            format: String;
-            price: Number;
-            duty: String;
-            availability: String;
-            conditions?: String;
-            imageUrl?: String;
+    vintage: String;
+    name: String;
+    producerId: String
+    color: String
+    quantity: Number;
+    format: String;
+    price: Number;
+    duty: String;
+    availability: String;
+    conditions?: String;
+    imageUrl?: String;
     ])
 
 -   updateProduct(  
-            id: String;  
-            vintage: String;  
-            name: String;  
-            color: String;  
-            quantity: Number;  
-            format: String;  
-            price: Number;  
-            duty: String;  
-            availability: String;  
-            conditions: String;  
-            imageUrl: String;  
+     id: String;  
+     vintage: String;  
+     name: String;  
+     color: String;  
+     quantity: Number;  
+     format: String;  
+     price: Number;  
+     duty: String;  
+     availability: String;  
+     conditions: String;  
+     imageUrl: String;  
     )
 
 -   deleteProducts([\_ids: string[]])
@@ -77,7 +77,7 @@ The main architecture is build around Product and Producer and it contains queri
 In the `/graphql/resolvers/uploadDocuments` folder you will find two options of importing:
 
 -   With relationship between Product and Producer  
-    ⏰ This one is more time comsuming ⏰  
+    ⏰ This one is more time comsuming ⏰
 
     For an organized relationship between Producers and Products
     use this approach:
@@ -110,5 +110,6 @@ Send GraphQl mutation to: http://localhost:3000/uploadFile for uploading .csv fi
 ## Test it
 
 (The app is already connected to a Mongo Compass Free database instance)
--   You can find a GraphQL_Postman_import folder that contains a JSON file
+
+-   In main folder you can find a GraphQL_Postman_import folder that contains a JSON file
 -   Import the file in Postman and you're ready to go
