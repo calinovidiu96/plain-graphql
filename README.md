@@ -2,10 +2,10 @@
 
 This is a GraphQL server that is using Express. Main architecture is build around Product and Producer and it contains queries as:
 
--   createProducer (
-    name: String;
-    country: String;
-    region: String;
+-   createProducer (  
+    name: String;  
+    country: String;  
+    region: String;  
     )
 
 -   createProducts ([
@@ -22,18 +22,18 @@ This is a GraphQL server that is using Express. Main architecture is build aroun
     imageUrl?: String;
     ])
 
--   updateProduct(
-    id: String;
-    vintage: String;
-    name: String;
-    color: String;
-    quantity: Number;
-    format: String;
-    price: Number;
-    duty: String;
-    availability: String;
-    conditions: String;
-    imageUrl: String;
+-   updateProduct(  
+    id: String;  
+    vintage: String;  
+    name: String;  
+    color: String;  
+    quantity: Number;  
+    format: String;  
+    price: Number;  
+    duty: String;  
+    availability: String;  
+    conditions: String;  
+    imageUrl: String;  
     )
 
 -   deleteProducts([\_ids: string[]])
@@ -48,19 +48,19 @@ This is a GraphQL server that is using Express. Main architecture is build aroun
 
 -   Check if the file is a CSV file
 -   Write a local file in temporary system memory:
-    -   Check file headers:
-        "Vintage",
-        "Product Name",
-        "Producer",
-        "Country",
-        "Region",
-        "Colour",
-        "Quantity",
-        "Format",
-        "Price (GBP)",
-        "Duty",
-        "Availability",
-        "Conditions",
+    -   Check file headers:  
+        "Vintage",  
+        "Product Name",  
+        "Producer",  
+        "Country",  
+        "Region",  
+        "Colour",  
+        "Quantity",  
+        "Format",  
+        "Price (GBP)",  
+        "Duty",  
+        "Availability",  
+        "Conditions",  
         "ImageUrl",
     -   Creates a unique key in form of:
         key = `${vintage}_${productName}_${producer}`;
