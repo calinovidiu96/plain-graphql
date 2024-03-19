@@ -84,8 +84,12 @@ const writeTempFile = async (fileData: any, filename: any) => {
 									: value;
 							})
 							.join(",") + "\n";
-					writeStream.write(csvRow);
-					uniqueKeys.add(key);
+					try {
+						writeStream.write(csvRow);
+						uniqueKeys.add(key);
+					} catch (error) {
+						console.error("Error writing to stream:", error);
+					}
 				} else {
 					console.log(`Found duplicate key ${key}. Skip this row.`);
 				}

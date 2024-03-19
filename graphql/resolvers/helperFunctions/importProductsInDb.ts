@@ -26,8 +26,6 @@ const importProductsInDb = async (filePath: string): Promise<void> => {
 					name: producerName,
 				});
 
-				console.log("producer", producer);
-
 				if (producer) {
 					try {
 						// Create product using the fetched producer ID
