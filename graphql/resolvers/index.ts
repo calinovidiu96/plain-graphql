@@ -7,6 +7,4 @@ const rootResolver = {
 	...productResolver,
 };
 
-// console.log("rootResolver", rootResolver);
-
 export default rootResolver;

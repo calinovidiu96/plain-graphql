@@ -83,7 +83,6 @@ export default {
 			// Format the fetched products to match the required structure
 			const formattedProducts = await Promise.all(
 				products.map(async (product: any) => {
-					console.log("product", product);
 					const producer = await getProducerById(product.producerId);
 					return {
 						...product.toJSON(),
