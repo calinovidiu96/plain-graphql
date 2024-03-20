@@ -1,9 +1,9 @@
 import Producer from "../../models/producerModel";
 
 type IProducer = {
-	name: String;
-	country: String;
-	region: String;
+	name: string;
+	country: string;
+	region: string;
 };
 
 export default {

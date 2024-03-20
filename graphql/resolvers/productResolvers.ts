@@ -3,17 +3,17 @@ import Producer from "../../models/producerModel";
 import { uploadDocument } from "./helperFunctions/uploadDocuments";
 
 type IProduct = {
-	vintage: String;
-	name: String;
-	producerId: String;
-	color: String;
-	quantity: Number;
-	format: String;
-	price: Number;
-	duty: String;
-	availability: String;
-	conditions?: String;
-	imageUrl?: String;
+	vintage: string;
+	name: string;
+	producerId: string;
+	color: string;
+	quantity: number;
+	format: string;
+	price: number;
+	duty: string;
+	availability: string;
+	conditions?: string;
+	imageUrl?: string;
 };
 
 type GetProductInput = {
@@ -25,17 +25,17 @@ type GetProductByProducerIdInput = {
 };
 
 type UpdateProductInput = {
-	id: String;
-	vintage: String;
-	name: String;
-	color: String;
-	quantity: Number;
-	format: String;
-	price: Number;
-	duty: String;
-	availability: String;
-	conditions: String;
-	imageUrl: String;
+	id: string;
+	vintage: string;
+	name: string;
+	color: string;
+	quantity: number;
+	format: string;
+	price: number;
+	duty: string;
+	availability: string;
+	conditions: string;
+	imageUrl: string;
 };
 
 const getProducerById = async (producerId: string) => {
@@ -53,20 +53,23 @@ const getProducerById = async (producerId: string) => {
 export default {
 	getProduct: async (input: GetProductInput) => {
 		try {
-			const product = await Product.findById(input.id).populate(
-				"producerId"
-			);
+			const product = await Product.findById(input.id);
 
 			if (!product) {
 				throw new Error("Product doesn't exist.");
 			}
 
-			const producer = product.producerId;
+			const producerId = product.producerId;
 
-			return {
-				...product.toJSON(),
-				producer,
-			};
+			if (producerId) {
+				const producer = await getProducerById(producerId.toString());
+				return {
+					...product.toJSON(),
+					producer,
+				};
+			} else {
+				throw new Error("Producer not found for this product.");
+			}
 		} catch (error) {
 			throw new Error(`Failed to fetch product. ${error}`);
 		}
@@ -80,6 +83,7 @@ export default {
 			// Format the fetched products to match the required structure
 			const formattedProducts = await Promise.all(
 				products.map(async (product: any) => {
+					console.log("product", product);
 					const producer = await getProducerById(product.producerId);
 					return {
 						...product.toJSON(),
@@ -96,18 +100,44 @@ export default {
 	},
 	createProducts: async ({ products }: { products: IProduct[] }) => {
 		try {
+			// Fetch producerIds from products
+			const producerIds = products.map((product) => product.producerId);
+
+			// Fetch all producers concurrently
+			const producers = await Promise.all(
+				producerIds.map(getProducerById)
+			).catch((error) => {
+				throw new Error(
+					`Failed to fetch one or more producers: ${error}`
+				);
+			});
+
 			const createdProducts = await Product.insertMany(products);
 
 			// Format the created products to match the required structure
-			const formattedProducts = createdProducts.map(
-				async (product: any) => {
-					const producer = await getProducerById(product.producerId);
-					return {
-						...product.toJSON(),
-						producer,
-					};
-				}
-			);
+			const formattedProducts = createdProducts.map((product: any) => {
+				const producer = producers.find(
+					(producer) =>
+						producer._id.toString() ===
+						product.producerId.toString()
+				);
+
+				return {
+					_id: product._id.toString(),
+					vintage: product.vintage,
+					name: product.name,
+					producerId: product.producerId,
+					color: product.color,
+					quantity: product.quantity,
+					format: product.format,
+					price: product.price,
+					duty: product.duty,
+					availability: product.availability,
+					conditions: product.conditions,
+					imageUrl: product.imageUrl,
+					producer,
+				};
+			});
 
 			return formattedProducts;
 		} catch (error) {
@@ -123,17 +153,22 @@ export default {
 			const { id, ...updates } = updateProductInput;
 			const product = await Product.findByIdAndUpdate(id, updates, {
 				new: true,
-			}).populate("producerId");
+			});
 
 			if (!product) {
 				throw new Error("Product not found.");
 			}
+			const producerId = product.producerId;
 
-			const producer = product.producerId;
-			return {
-				...product.toJSON(),
-				producer,
-			};
+			if (producerId) {
+				const producer = await getProducerById(producerId.toString());
+				return {
+					...product.toJSON(),
+					producer,
+				};
+			} else {
+				throw new Error("Producer not found for this product.");
+			}
 		} catch (error) {
 			throw new Error(`Failed to update product. ${error}`);
 		}

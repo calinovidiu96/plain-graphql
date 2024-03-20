@@ -8,6 +8,7 @@ const schema = `#graphql
     vintage: String!
     name: String!
     producer: Producer
+    producerId: String
     color: String
     quantity: Int
     format: String
